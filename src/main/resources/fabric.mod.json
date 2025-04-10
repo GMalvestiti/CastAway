@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "castaway",
+  "version": "${version}",
+  "name": "CastAway",
+  "description": "Disables lava casts with no performance overhead",
+  "authors": [
+    "Riser876"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/user/Riser876",
+    "sources": "https://github.com/GMalvestiti/CastAway",
+    "issues": "https://github.com/GMalvestiti/CastAway/issues"
+  },
+  "license": "Apache-2.0",
+  "icon": "assets/castaway/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["net.riser876.castaway.CastAway"]
+  },
+  "mixins": [
+    "castaway.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "minecraft": "${minecraft_version}",
+    "java": ">=21"
+  }
+}
