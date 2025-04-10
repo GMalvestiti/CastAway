@@ -4,6 +4,7 @@
   "package": "net.riser876.castaway.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "FluidBlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1
