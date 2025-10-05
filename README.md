@@ -55,7 +55,7 @@ if (state.isOf(Blocks.COBBLESTONE)) {
 - Manual cobblestone placement or non-fluid generation mechanics.
 - Custom fluid systems not using standard `FluidBlock` logic.
 
-## Documentation
+## Documentation (2.0.0+)
 
 - **enabled**:<br>
   Enables or disables the mod.<br>
