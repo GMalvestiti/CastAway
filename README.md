@@ -55,6 +55,39 @@ if (state.isOf(Blocks.COBBLESTONE)) {
 - Manual cobblestone placement or non-fluid generation mechanics.
 - Custom fluid systems not using standard `FluidBlock` logic.
 
+## Documentation
+
+- **enabled**:<br>
+  Enables or disables the mod.<br>
+  Type: `boolean` Default: `true`
+- **water_level**:<br>
+  Property that specifies the height of water on a scale of 1 to 7.<br>
+  Type: `integer` Default: `1`
+- **water_falling**:<br>
+  Property that specifies if water is falling.<br>
+  Type: `boolean` Default: `false`
+
+## Checks
+
+CastAway performs the following checks in the config file:
+
+- **Water Level Below 1**:<br>
+  Checks if the water level is below 1.<br>
+  **On Failure**: Adjusts to 1.
+- **Water Level Above 7**:<br>
+  Checks if the water level is above 7.<br>
+  **On Failure**: Adjusts to 7.
+
+## Full Configuration Example:
+
+```json
+{
+  "enabled": true,
+  "water_level": 1,
+  "water_falling": false
+}
+```
+
 ## Stone Generator (Working)
 
 ![Alternative/Working Stone Generator](https://cdn.modrinth.com/data/cached_images/e23f72c914b21b58dc1b14915c5a3d2cbd523ea5.png)
