@@ -6,6 +6,7 @@
   "mixins": [
     "FluidBlockMixin"
   ],
+  "plugin": "net.riser876.castaway.mixin.CastAwayMixinPlugin",
   "injectors": {
     "defaultRequire": 1
   }
