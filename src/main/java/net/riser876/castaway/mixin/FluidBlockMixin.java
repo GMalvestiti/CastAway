@@ -1,32 +1,32 @@
 package net.riser876.castaway.mixin;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.FluidBlock;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.riser876.castaway.CastAway;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
-@Mixin(FluidBlock.class)
+@Mixin(LiquidBlock.class)
 public abstract class FluidBlockMixin {
 
-    @Redirect(
-        method = "receiveNeighborFluids",
+    @WrapOperation(
+        method = "shouldSpreadLiquid",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/world/World;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)Z"
+            target = "Lnet/minecraft/world/level/Level;setBlockAndUpdate(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z"
         )
     )
-    private boolean redirectSetBlockState(World world, BlockPos pos, BlockState state) {
-        if (state.isOf(Blocks.COBBLESTONE)) {
-            return world.setBlockState(pos, CastAway.FLOWING_WATER);
+    private boolean castAway$wrapSetBlockState(Level level, BlockPos pos, BlockState state, Operation<Boolean> original) {
+        if (state.is(Blocks.COBBLESTONE)) {
+            return level.setBlockAndUpdate(pos, CastAway.FLOWING_WATER);
         }
 
-        return world.setBlockState(pos, state);
+        return level.setBlockAndUpdate(pos, state);
     }
 }

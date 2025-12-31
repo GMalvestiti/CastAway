@@ -45,6 +45,7 @@ public class ConfigManager {
 
     private static void saveConfig() {
         try {
+            ConfigManager.validateConfig();
             String json = GSON.toJson(ConfigManager.CONFIG);
             Files.write(ConfigManager.CONFIG_PATH, json.getBytes());
         } catch (IOException e) {
