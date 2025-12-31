@@ -38,13 +38,7 @@ In vanilla Minecraft, when lava and water come into contact, the resulting block
 
 ## Compatibility and Performance
 
-*CastAway* uses a **Mixin** to intercept the call that generates a new block when lava interacts with water. It modifies the `receiveNeighborFluids` method, which controls the formation of cobblestone during lava-water interactions.
-
-```java
-if (state.isOf(Blocks.COBBLESTONE)) {
-    return world.setBlockState(pos, CastAway.FLOWING_WATER);
-}
-```
+*CastAway* uses a **Mixin** to intercept the call that generates a new block when lava interacts with water. It modifies the `shouldSpreadLiquid` method, which controls the formation of cobblestone during lava-water interactions.
 
 ### ✅ Affected:
 - **Vanilla lava and water**.

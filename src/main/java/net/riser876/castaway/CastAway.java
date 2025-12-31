@@ -1,8 +1,8 @@
 package net.riser876.castaway;
 
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.block.BlockState;
-import net.minecraft.fluid.Fluids;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
 import net.riser876.castaway.util.CastAwayGlobals;
 import java.util.Objects;
 
@@ -23,7 +23,7 @@ public class CastAway implements ModInitializer {
     }
 
     private static void setFlowingWater() {
-        FLOWING_WATER = Fluids.FLOWING_WATER.getFlowing(CONFIG.WATER_LEVEL, CONFIG.WATER_FALLING).getBlockState();
+        FLOWING_WATER = Fluids.FLOWING_WATER.getFlowing(CONFIG.WATER_LEVEL, CONFIG.WATER_FALLING).createLegacyBlock();
         CastAwayGlobals.LOGGER.info("[CastAway] Water level set to {} and falling set to {}.", CONFIG.WATER_LEVEL, CONFIG.WATER_FALLING);
     }
 }
