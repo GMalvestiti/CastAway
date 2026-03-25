@@ -1,7 +1,7 @@
 package net.riser876.castaway.mixin;
 
+import net.riser876.castaway.CastAway;
 import net.riser876.castaway.config.ConfigManager;
-import net.riser876.castaway.util.CastAwayGlobals;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -16,9 +16,9 @@ public class CastAwayMixinPlugin implements IMixinConfigPlugin {
     public void onLoad(String mixinPackage) {
         try {
             ConfigManager.loadConfig();
-            CastAwayGlobals.LOGGER.info("[CastAway] Configuration loaded.");
+            CastAway.LOGGER.info("[CastAway] Configuration loaded.");
         } catch (Exception e) {
-            CastAwayGlobals.LOGGER.error("[CastAway] Failed to load configuration. Check your castaway.json config file.", e);
+            CastAway.LOGGER.error("[CastAway] Failed to load configuration. Check your castaway.json config file.", e);
         }
     }
 

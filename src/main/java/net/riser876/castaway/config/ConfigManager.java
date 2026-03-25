@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import net.fabricmc.loader.api.FabricLoader;
-import net.riser876.castaway.util.CastAwayGlobals;
+import net.riser876.castaway.CastAway;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -56,12 +56,12 @@ public class ConfigManager {
     private static void validateConfig() {
         if (CONFIG.WATER_LEVEL <= 0) {
             CONFIG.WATER_LEVEL = 1;
-            CastAwayGlobals.LOGGER.info("[CastAway] Water Level below the minimum limit of 1. Changing it to 1.");
+            CastAway.LOGGER.info("[CastAway] Water Level below the minimum limit of 1. Changing it to 1.");
         }
 
         if (CONFIG.WATER_LEVEL > 7) {
             CONFIG.WATER_LEVEL = 7;
-            CastAwayGlobals.LOGGER.info("[CastAway] Water Level above the maximum limit of 7. Changing it to 7.");
+            CastAway.LOGGER.info("[CastAway] Water Level above the maximum limit of 7. Changing it to 7.");
         }
     }
 }
