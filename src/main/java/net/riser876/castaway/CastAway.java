@@ -13,7 +13,7 @@ import static net.riser876.castaway.config.ConfigManager.CONFIG;
 
 public class CastAway implements ModInitializer {
 
-    public static final String MOD_ID = "deepsea";
+    public static final String MOD_ID = "castaway";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     public static BlockState FLOWING_WATER;

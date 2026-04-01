@@ -18,7 +18,7 @@ public class CastAwayMixinPlugin implements IMixinConfigPlugin {
     public void onLoad(String mixinPackage) {
         try {
             ConfigManager.loadConfig();
-            CastAway.LOGGER.info("[CastAway] Configuration loader.");
+            CastAway.LOGGER.info("[CastAway] Configuration loaded.");
         } catch (Exception e) {
             CastAway.LOGGER.error("[CastAway] Failed to load configuration.", e);
         }
