@@ -1,0 +1,87 @@
+# CastAway
+
+*CastAway* is a lightweight Minecraft mod for Fabric that prevents lava cast griefing by modifying the way **lava and water interact**. Specifically, it disables the automatic generation of cobblestone when lava meets water, thus breaking lava casts.
+
+### Key Features:
+- ❌ **Cobblestone** generators no longer work.
+- ✅ **Stone** generators continue to function as usual.
+- ✅ **Obsidian** generation continue to function as usual.
+- ✅ Modded fluid interactions remain unaffected unless involving a lava or water variant.
+
+*CastAway* is ideal for **servers** where lava casts are problematic, offering a seamless solution without performance penalties.
+
+##  How Lava-Water Interactions Work (Vanilla)
+
+In vanilla Minecraft, when lava and water come into contact, the resulting block depends on several factors:
+
+1. The type of lava (**flowing or source**).
+2. The type of water (**flowing or source**).
+3. The **direction** of interaction.
+
+### Interaction Table
+
+| Interaction                             | Resulting Block | Affected by CastAway?        |
+|----------------------------------------|------------------|------------------------------|
+| Water → source lava       | Obsidian         | ❌ Unaffected                |
+| Water → flowing lava    | Cobblestone      | ✅ Replaced with flowing water |
+| Lava → water (**from above**) | Stone            | ❌ Unaffected                |
+| Lava → water (others)   | Cobblestone      | ✅ Replaced with flowing water |
+
+>  **CastAway intercepts the interaction** and replaces cobblestone with flowing water, preventing lava casts from forming while leaving other mechanics untouched.
+
+## Installation
+
+1. Drop the CastAway `.jar` into your `mods` folder.
+2. Start the server or enter the world — the mod is active immediately.
+
+> This mod operates **server-side only**, meaning clients do not need to install it.
+
+## Compatibility and Performance
+
+*CastAway* uses a **Mixin** to intercept the call that generates a new block when lava interacts with water. It modifies the `shouldSpreadLiquid` method, which controls the formation of cobblestone during lava-water interactions.
+
+### ✅ Affected:
+- **Vanilla lava and water**.
+- **Modded fluids** tagged as `lava` or `water`.
+
+### ❌ Not Affected:
+- Fluids **not tagged** as lava or water (e.g., oil, molten metals, gases).
+- Manual cobblestone placement or non-fluid generation mechanics.
+- Custom fluid systems not using standard `FluidBlock` logic.
+
+## Documentation (2.0.0+)
+
+- **enabled**:<br>
+  Enables or disables the mod.<br>
+  Type: `boolean` Default: `true`
+- **water_level**:<br>
+  Property that specifies the height of water on a scale of 1 to 7.<br>
+  Type: `integer` Default: `1`
+- **water_falling**:<br>
+  Property that specifies if water is falling.<br>
+  Type: `boolean` Default: `false`
+
+## Checks
+
+CastAway performs the following checks in the config file:
+
+- **Water Level Below 1**:<br>
+  Checks if the water level is below 1.<br>
+  **On Failure**: Adjusts to 1.
+- **Water Level Above 7**:<br>
+  Checks if the water level is above 7.<br>
+  **On Failure**: Adjusts to 7.
+
+## Full Configuration Example:
+
+```json
+{
+  "enabled": true,
+  "water_level": 1,
+  "water_falling": false
+}
+```
+
+## Stone Generator (Working)
+
+![Alternative/Working Stone Generator](https://cdn.modrinth.com/data/cached_images/e23f72c914b21b58dc1b14915c5a3d2cbd523ea5.png)

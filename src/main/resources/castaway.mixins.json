@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.riser876.castaway.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "LiquidBlockMixin"
+  ],
+  "plugin": "net.riser876.castaway.mixin.CastAwayMixinPlugin",
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}
